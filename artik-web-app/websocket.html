@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ARTIK Cloud based Smart Parking System</title> 
+        <script src="websocket_client.js"></script>
+		<style>
+		rainbowParking {
+			display: block;
+			background-color: #dddddd;
+			padding: 30px;
+			font-size: 70px;
+			line-height: 60%;
+			margin-left:40px;
+			margin-right:40px;
+			border-style: groove;
+		}
+		indigoParking {
+			display: block;
+			background-color: #dddddd;
+			padding: 30px;
+			font-size: 70px;
+			line-height: 60%;
+			margin-left:40px;
+			margin-right:40px;
+			border-style: groove;
+		}
+		div.container {
+            margin: 15px;   
+        }
+        div.left, div.right {
+            float: left;
+            padding: 10px;    
+        }
+        div.left {
+            background-color:white;  
+            width:900px;  
+            height:500px;
+        }
+        div.right {
+            background-color: #dddddd; 
+            width:360px;  
+            height:400px;	
+            margin-top:20px;	
+            margin-bottom:100px;			  
+        }
+        </style>
+    </head>
+    <body onload="javascript:init()">
+        <h2 style="color:green;text-align:center;font-size: 50px">ARTIK Cloud based Smart Parking System</h2>   
+
+        <div class="container">
+            <div class="left">
+	          <h1 style="line-height: 30%; color:blue;margin-left:40px">Rainbow Parking</h1>
+			  <h4 style="line-height: 10%; margin-left:40px">17, Free School Street, Kathalbagan</h4>
+			  <rainbowParking id="rainbow">Receiving Data...</rainbowParking>
+			  <h1 style="line-height: 30%; color:white;margin-left:40px">1</h1>
+			  <h1 style="line-height: 30%; color:blue;margin-left:40px">Indigo Parking</h1>
+			  <h4 style="line-height: 10%; margin-left:40px">29, Progoti Street, Paltan</h4>
+			  <indigoParking id="indigo">Receiving Data...</indigoParking>
+	        </div>
+            <div class="right">
+			 <div id="map" style="width:100%;height:100%">
+			 
+			 </div>
+			</div>
+        </div>
+          
+			    
+        <div id = "websocketelements">
+        <div id="attributes_log"> </div>
+        </div>
+		
+		<div id="close">
+                <a href="javascript:onClose()">Close connection to Parking System</a>
+        </div>
+
+        <h4>Output Console</h4>
+
+        <div id="output"></div> 
+		
+		<script>
+          function myMap() {
+          var mapCanvas = document.getElementById("map");
+          var mapOptions = {
+          center: new google.maps.LatLng(23.7850, 90.4563),
+          zoom: 11
+          }
+          var map = new google.maps.Map(mapCanvas, mapOptions);
+		  
+		  var rainbow_marker = new google.maps.Marker({
+          // The below line is equivalent to writing:
+          // position: new google.maps.LatLng(-34.397, 150.644)
+          position: {lat: 23.7543, lng: 90.364},
+          map: map
+          });
+		
+		  var indigo_marker = new google.maps.Marker({
+          // The below line is equivalent to writing:
+          // position: new google.maps.LatLng(-34.397, 150.644)
+          position: {lat: 23.7943, lng: 90.384},
+          map: map
+          });
+		  
+		  var infowindow = new google.maps.InfoWindow({
+          content: '<p>Rainbow Parking, 17, Free School Street</p>'
+          });
+          var infowindowindigo = new google.maps.InfoWindow({
+          content: '<p>Indigo Parking, 29, Progoti Street</p>'
+          });
+		
+          google.maps.event.addListener(rainbow_marker, 'click', function() {
+          infowindow.open(map, rainbow_marker);
+          });
+		
+		  google.maps.event.addListener(indigo_marker, 'click', function() {
+          infowindowindigo.open(map, indigo_marker);
+          });
+		
+		}
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+		
+    </body>
+</html>

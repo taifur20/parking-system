@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Main activity -->
+    <string name="app_name">Parking Lot Finder</string>
+    <string name="hello_world">Please login to ARTIK Cloud</string>
+    <string name="click">login</string>
+    
+    <!-- message activity -->
+    <string name="play_with_messages">Smart Parking System</string>
+    <string name="welcome_txt">Welcome </string>
+    <string name="send_btn_txt">send a message</string>
+    <string name="sendmsg_response">Response </string>
+    <string name="getlatest_btn_txt">Find Parking Lot</string>
+    <string name="getlatest_response_mid">id </string>
+    <string name="getlatest_response_mdata">data </string>
+    
+
+</resources>
